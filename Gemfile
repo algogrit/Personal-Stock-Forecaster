@@ -16,6 +16,8 @@ group :assets do
   # gem 'therubyracer'
 
   gem 'uglifier', '>= 1.0.3'
+
+  gem "twitter-bootstrap-rails"
 end
 
 gem 'jquery-rails'
@@ -37,8 +39,7 @@ gem 'jquery-rails'
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
 end
 
-group :test do
-  gem 'cucumber-rails', require: false
-end
+gem 'cucumber-rails', require: false, group: 'test'

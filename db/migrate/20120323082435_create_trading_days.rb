@@ -3,9 +3,10 @@ class CreateTradingDays < ActiveRecord::Migration
     create_table :trading_days do |t|
       t.integer :opening
       t.integer :closing
-      t.integer :days_high
-      t.integer :days_low
+      t.integer :high
+      t.integer :low
       t.integer :volume
+      t.date :date_of_trade
       t.references :stock
 
       t.timestamps

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120320173342) do
+ActiveRecord::Schema.define(:version => 20120323082435) do
 
   create_table "stocks", :force => true do |t|
     t.string   "stock_id"
@@ -23,12 +23,13 @@ ActiveRecord::Schema.define(:version => 20120320173342) do
   create_table "trading_days", :force => true do |t|
     t.integer  "opening"
     t.integer  "closing"
-    t.integer  "days_high"
-    t.integer  "days_low"
+    t.integer  "high"
+    t.integer  "low"
     t.integer  "volume"
+    t.date     "date_of_trade"
     t.integer  "stock_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   add_index "trading_days", ["stock_id"], :name => "index_trading_days_on_stock_id"
