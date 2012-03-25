@@ -3,21 +3,19 @@
 <table class="table table-striped">
   <thead>
   <tr>
+    <th>ID</th>
     <th>Stock ID</th>
     <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Actions</th>
   </tr>
   </thead>
   <tbody>
   <% @stocks.each do |stock| %>
       <tr>
-        <td><%= stock.stock_id %></td>
+        <td><%= stock.id %></td>
+        <td><%= link_to stock.stock_id, stock%></td>
         <td><%= stock.name %></td>
-        <td><%= link_to 'Show', stock %></td>
-        <td><%= link_to 'Edit', edit_stock_path(stock) %></td>
-        <td><%= link_to 'Destroy', stock, confirm: 'Are you sure?', method: :delete %></td>
+        <td><%= link_to 'Edit', edit_stock_path(stock), class: "btn btn-mini btn-warning" %> <%= link_to 'Destroy', stock, confirm: 'Are you sure?', method: :delete, class: "btn btn-mini btn-danger" %></td>
       </tr>
   <% end %>
   </tbody>
@@ -25,5 +23,5 @@
 
 <br />
 
-<%= link_to 'New Stock', new_stock_path %>
+<%= link_to 'New Stock', new_stock_path, class: "btn btn-primary" %>
 <p><%= will_paginate @stocks %></p>
