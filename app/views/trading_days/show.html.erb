@@ -1,2 +1,24 @@
-<h1>TradingDays#show</h1>
-<p>Find me in app/views/trading_days/show.html.erb</p>
+<h3><%= @trading_day.stock.name %> on <%= @trading_day.date_of_trade %></h3>
+
+<table class="table table-striped table-bordered table-condensed">
+  <tr>
+  <td>Opening: </td>
+  <td><%= @trading_day.opening %></td>
+  </tr>
+  <tr>
+  <td>Closing: </td>
+  <td><%= @trading_day.closing %></td>
+  </tr>
+  <tr>
+  <td>Day's High: </td>
+  <td><%= @trading_day.high %></td>
+  </tr>
+  <tr>
+  <td>Day's Low: </td>
+  <td><%= @trading_day.low %></td>
+  </tr>
+  <tr>
+  <td>Volume Traded: </td>
+  <td><%= @trading_day.volume %></td>
+  </tr>
+</table>
