@@ -1,15 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Stock:</b>
-  <%= @stock.stock_id %>
-</p>
+<h2><%= @stock.stock_id %> - <%= @stock.name %></h2>
 
-<p>
-  <b>Name:</b>
-  <%= @stock.name %>
-</p>
-
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Day</th>
+    <th>Day's Opening</th>
+    <th>Day's Closing</th>
+    <th>Day's High</th>
+    <th>Day's Low</th>
+    <th>Volume Traded</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <%= render @trading_days %>
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_stock_path(@stock) %> |
 <%= link_to 'Back', stocks_path %>
+
+<p><%= will_paginate @trading_days %></p>

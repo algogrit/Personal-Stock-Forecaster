@@ -2,7 +2,7 @@ class StocksController < ApplicationController
   # GET /stocks
   # GET /stocks.json
   def index
-    @stocks = Stock.all
+    @stocks = Stock.paginate page: params[:page], order: 'name', per_page: 25
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +14,7 @@ class StocksController < ApplicationController
   # GET /stocks/1.json
   def show
     @stock = Stock.find(params[:id])
+    @trading_days = @stock.trading_days.paginate page: params[:page], order: 'date_of_trade desc', per_page: 30
 
     respond_to do |format|
       format.html # show.html.erb

@@ -2,7 +2,6 @@ PersonalStockForecaster::Application.routes.draw do
   resources :stocks do
     resources :trading_days
   end
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

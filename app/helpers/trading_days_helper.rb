@@ -1,0 +1,2 @@
+module TradingDaysHelper
+end
