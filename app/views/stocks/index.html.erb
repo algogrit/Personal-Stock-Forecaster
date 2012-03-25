@@ -3,7 +3,6 @@
 <table class="table table-striped">
   <thead>
   <tr>
-    <th>ID</th>
     <th>Stock ID</th>
     <th>Name</th>
     <th>Actions</th>
@@ -12,7 +11,6 @@
   <tbody>
   <% @stocks.each do |stock| %>
       <tr>
-        <td><%= stock.id %></td>
         <td><%= link_to stock.stock_id, stock%></td>
         <td><%= stock.name %></td>
         <td><%= link_to 'Edit', edit_stock_path(stock), class: "btn btn-mini btn-warning" %> <%= link_to 'Destroy', stock, confirm: 'Are you sure?', method: :delete, class: "btn btn-mini btn-danger" %></td>
