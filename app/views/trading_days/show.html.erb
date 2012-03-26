@@ -2,23 +2,29 @@
 
 <table class="table table-striped table-bordered table-condensed">
   <tr>
-  <td>Opening: </td>
-  <td><%= @trading_day.opening %></td>
+    <td>Opening: </td>
+    <td><%= @trading_day.opening %></td>
   </tr>
   <tr>
-  <td>Closing: </td>
-  <td><%= @trading_day.closing %></td>
+    <td>Closing: </td>
+    <td><%= @trading_day.closing %></td>
   </tr>
   <tr>
-  <td>Day's High: </td>
-  <td><%= @trading_day.high %></td>
+    <td>Day's High: </td>
+    <td><%= @trading_day.high %></td>
   </tr>
   <tr>
-  <td>Day's Low: </td>
-  <td><%= @trading_day.low %></td>
+    <td>Day's Low: </td>
+    <td><%= @trading_day.low %></td>
   </tr>
   <tr>
-  <td>Volume Traded: </td>
-  <td><%= @trading_day.volume %></td>
+    <td>Volume Traded: </td>
+    <td><%= @trading_day.volume %></td>
   </tr>
 </table>
+
+<h3>Prediction for <%= @trading_day.stock.name %></h3>
+
+<%= render @trading_day.prediction %>
+
+<%= link_to 'Back', @trading_day.stock %>

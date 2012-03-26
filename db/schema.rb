@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120323082435) do
+ActiveRecord::Schema.define(:version => 20120325164503) do
+
+  create_table "predictions", :force => true do |t|
+    t.integer  "value"
+    t.date     "for_date"
+    t.integer  "trading_day_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "predictions", ["trading_day_id"], :name => "index_predictions_on_trading_day_id"
 
   create_table "stocks", :force => true do |t|
     t.string   "stock_id"
