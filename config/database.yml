@@ -11,12 +11,13 @@
 development:
   adapter: mysql2
   encoding: utf8
-  reconnect: false
+#  reconnect: false
   database: Personal Stock Forecaster_development
-  pool: 5
+#  pool: 5
   username: root
   password: root
-  socket: /tmp/mysql.sock
+#  socket: /tmp/mysql.sock
+  host: localhost
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -24,22 +25,24 @@ development:
 test: &test
   adapter: mysql2
   encoding: utf8
-  reconnect: false
+#  reconnect: false
   database: Personal Stock Forecaster_test
-  pool: 5
+#  pool: 5
   username: root
   password: root
-  socket: /tmp/mysql.sock
+#  socket: /tmp/mysql.sock
+  host: localhost
 
 production:
   adapter: mysql2
   encoding: utf8
-  reconnect: false
+#  reconnect: false
   database: Personal Stock Forecaster_production
-  pool: 5
+#  pool: 5
   username: root
   password: root
-  socket: /tmp/mysql.sock
+#  socket: /tmp/mysql.sock
+  host: localhost
 
 cucumber:
   <<: *test
