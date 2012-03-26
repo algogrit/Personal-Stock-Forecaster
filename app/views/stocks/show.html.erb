@@ -2,22 +2,26 @@
 
 <h2><%= @stock.stock_id %> - <%= @stock.name %></h2>
 
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th>Day</th>
-    <th>Day's Opening</th>
-    <th>Day's Closing</th>
-    <th>Day's High</th>
-    <th>Day's Low</th>
-    <th>Volume Traded</th>
-    <th></th>
-  </tr>
-  </thead>
-  <tbody>
-  <%= render @trading_days %>
-  </tbody>
-</table>
+<% if !@stock.trading_days.empty? %>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Day</th>
+        <th>Day's Opening</th>
+        <th>Day's Closing</th>
+        <th>Day's High</th>
+        <th>Day's Low</th>
+        <th>Volume Traded</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <%= render @trading_days %>
+      </tbody>
+    </table>
+<% else %>
+    <br/>*No quotes have been recorded for this stock!<br/><br/>
+<%end%>
 
 <%= link_to 'Edit', edit_stock_path(@stock) %> |
 <%= link_to 'Back', stocks_path %>
