@@ -9,11 +9,20 @@ class Stock < ActiveRecord::Base
     require 'CSV'
     stocks = Stock.all
     stocks.each do |stock|
-      fetch_quotes_for(stock, Date.today-1.year, Date.today)
+      fetch_quotes_for(stock, last_quotes_update(stock), Date.today)
     end
   end
 
   private
+  def self.last_quotes_update(stock)
+    if stock.trading_days.first.nil?
+      quotes_update=Date.today-1.year
+    else
+      quotes_update=stock.trading_days.last.created_at.to_date
+    end
+    quotes_update
+  end
+
   def self.fetch_quotes_for(stock, start_date, end_date)
     file_path = generate_csv(stock.stock_id, start_date, end_date)
     CSV.open(file_path).each_with_index do |row, i|
@@ -25,7 +34,7 @@ class Stock < ActiveRecord::Base
 
   def self.generate_csv(stock_symbol, start_date, end_date)
     file_path = "app/assets/csv/"+Date.today.to_s+stock_symbol+".csv"
-    if !File.exists? file_path+" "
+    unless File.exists? file_path+" "
       file = File.new(file_path, 'w+')
       file.puts YahooFinance.quick_query(stock_symbol, start_date, end_date)
       file.close
