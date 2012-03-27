@@ -13,6 +13,7 @@ class Stock < ActiveRecord::Base
     end
   end
 
+  private
   def self.fetch_quotes_for(stock, start_date, end_date)
     file_path = generate_csv(stock.stock_id, start_date, end_date)
     CSV.open(file_path).each_with_index do |row, i|
@@ -23,7 +24,7 @@ class Stock < ActiveRecord::Base
   end
 
   def self.generate_csv(stock_symbol, start_date, end_date)
-    file_path = "public/tmp/"+Date.today.to_s+stock_symbol+".csv";
+    file_path = "app/assets/csv/"+Date.today.to_s+stock_symbol+".csv"
     if !File.exists? file_path+" "
       file = File.new(file_path, 'w+')
       file.puts YahooFinance.quick_query(stock_symbol, start_date, end_date)
