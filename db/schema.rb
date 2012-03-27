@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(:version => 20120325164503) do
 
   create_table "predictions", :force => true do |t|
-    t.integer  "value"
+    t.float    "value"
     t.date     "for_date"
     t.integer  "trading_day_id"
     t.datetime "created_at",     :null => false
@@ -31,10 +31,10 @@ ActiveRecord::Schema.define(:version => 20120325164503) do
   end
 
   create_table "trading_days", :force => true do |t|
-    t.integer  "opening"
-    t.integer  "closing"
-    t.integer  "high"
-    t.integer  "low"
+    t.float    "opening"
+    t.float    "closing"
+    t.float    "high"
+    t.float    "low"
     t.integer  "volume"
     t.date     "date_of_trade"
     t.integer  "stock_id"

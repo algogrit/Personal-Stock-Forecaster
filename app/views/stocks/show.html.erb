@@ -23,7 +23,7 @@
     <br/>*No quotes have been recorded for this stock!<br/><br/>
 <%end%>
 
+<p><%= will_paginate @trading_days %></p>
+
 <%= link_to 'Edit', edit_stock_path(@stock) %> |
 <%= link_to 'Back', stocks_path %>
-
-<p><%= will_paginate @trading_days %></p>
