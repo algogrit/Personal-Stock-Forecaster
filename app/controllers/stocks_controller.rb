@@ -88,7 +88,7 @@ class StocksController < ApplicationController
         format.html { redirect_to stocks_url, notice: 'Stock quotes have been updated.' }
         format.json { head :no_content }
       else
-        format.html { redirect_to stocks_url, error: 'There has been some problem with fetching quotes, try again later.' }
+        format.html { redirect_to stocks_url, alert: 'There has been some problem with fetching quotes, try again later.' }
         format.json { head :no_content }
       end
     end

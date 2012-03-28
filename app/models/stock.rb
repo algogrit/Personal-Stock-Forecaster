@@ -7,12 +7,13 @@ class Stock < ActiveRecord::Base
 
   def self.fetch_all_quotes
     begin
-    stocks = Stock.all
-    stocks.each do |stock|
-      fetch_quotes_for(stock, last_quotes_update(stock), Date.today)
-    end
+      stocks = Stock.all
+      stocks.each do |stock|
+        fetch_quotes_for(stock, last_quotes_update(stock), Date.today)
+      end
       return true
     rescue SymbolNotFoundException
+      logger.error "SymbolNotFoundException Encoutered"
       return false
     end
   end
@@ -46,7 +47,7 @@ class Stock < ActiveRecord::Base
     if stock.trading_days.first.nil?
       quotes_update=Date.today-1.year
     else
-      quotes_update=stock.trading_days.last.created_at.to_date-1.day
+      quotes_update=stock.trading_days.find(:first, :order => "created_at DESC").created_at.to_date
     end
     quotes_update
   end
