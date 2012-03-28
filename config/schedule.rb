@@ -18,3 +18,11 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+
+every 1.day, :at => '4:00 pm' do
+  runner "Stock.fetch_all_quotes"
+end
+
+every :reboot do
+  runner "Stock.fetch_all_quotes"
+end
