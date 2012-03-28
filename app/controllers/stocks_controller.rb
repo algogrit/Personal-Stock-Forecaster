@@ -81,4 +81,16 @@ class StocksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def fetch_quotes
+    respond_to do |format|
+      if Stock.fetch_all_quotes
+        format.html { redirect_to stocks_url, notice: 'Stock quotes have been updated.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to stocks_url, error: 'There has been some problem with fetching quotes, try again later.' }
+        format.json { head :no_content }
+      end
+    end
+  end
 end

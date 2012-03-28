@@ -6,25 +6,35 @@ class Stock < ActiveRecord::Base
   has_many :trading_days, :dependent => :destroy
 
   def self.fetch_all_quotes
-    require 'CSV'
+    begin
     stocks = Stock.all
     stocks.each do |stock|
       fetch_quotes_for(stock, last_quotes_update(stock), Date.today)
     end
+      return true
+    rescue SymbolNotFoundException
+      return false
+    end
   end
 
   private
-  def self.last_quotes_update(stock)
-    if stock.trading_days.first.nil?
-      quotes_update=Date.today-1.year
-    else
-      quotes_update=stock.trading_days.last.created_at.to_date
+  def self.fetch_quotes_for(stock, start_date, end_date)
+    stock_symbol = stock.stock_id
+    file_path = "app/assets/csv/"+Date.today.to_s+stock_symbol+".csv"
+    unless File.exists? file_path
+      generate_csv(stock_symbol, start_date, end_date, file_path)
+      parse_csv(file_path, stock)
     end
-    quotes_update
   end
 
-  def self.fetch_quotes_for(stock, start_date, end_date)
-    file_path = generate_csv(stock.stock_id, start_date, end_date)
+  def self.generate_csv(stock_symbol, start_date, end_date, file_path)
+    file = File.new(file_path, 'w+')
+    file.puts YahooFinance.quick_query(stock_symbol, start_date, end_date)
+    file.close
+  end
+
+  def self.parse_csv(file_path, stock)
+    require 'CSV'
     CSV.open(file_path).each_with_index do |row, i|
       next if i==0
       trading_day_attributes = {date_of_trade: row[0].to_date, opening: row[1].to_f, high: row[2].to_f, low: row[3].to_f, closing: row[4].to_f, volume: row[5].to_i}
@@ -32,14 +42,13 @@ class Stock < ActiveRecord::Base
     end
   end
 
-  def self.generate_csv(stock_symbol, start_date, end_date)
-    file_path = "app/assets/csv/"+Date.today.to_s+stock_symbol+".csv"
-    unless File.exists? file_path+" "
-      file = File.new(file_path, 'w+')
-      file.puts YahooFinance.quick_query(stock_symbol, start_date, end_date)
-      file.close
+  def self.last_quotes_update(stock)
+    if stock.trading_days.first.nil?
+      quotes_update=Date.today-1.year
+    else
+      quotes_update=stock.trading_days.last.created_at.to_date-1.day
     end
-    file_path
+    quotes_update
   end
 
 end
