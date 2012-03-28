@@ -37,6 +37,6 @@ Stock.find_or_create_by_stock_id({stock_id: "BHARTIART.NS", name: "Bharati Airte
 Stock.find_or_create_by_stock_id({stock_id: "RCOM.BO", name: "Reliance Communications"})
 Stock.find_or_create_by_stock_id({stock_id: "SIEMENS.BO", name: "Siemens"})
 Stock.find_or_create_by_stock_id({stock_id: "RANBAXY.NS", name: "Ranbaxy Pharmaceuticals"})
-Stock.find_or_create_by_stock_id({stock_id: "DRREDDY.NS", name: "Dr. Reddy's'"})
+Stock.find_or_create_by_stock_id({stock_id: "DRREDDY.NS", name: "Dr. Reddy's"})
 Stock.find_or_create_by_stock_id({stock_id: "BPCL.NS", name: "BPCL"})
 Stock.find_or_create_by_stock_id({stock_id: "NTPC.NS", name: "NTPC"})
