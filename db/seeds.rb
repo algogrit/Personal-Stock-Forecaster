@@ -18,7 +18,7 @@
 Stock.find_or_create_by_stock_id({stock_id: "TCS.NS", name: "Tata Consultancy Services"})
 Stock.find_or_create_by_stock_id({stock_id: "TATASTEEL.NS", name: "Tata Steel"})
 Stock.find_or_create_by_stock_id({stock_id: "SAIL.NS", name: "SAIL"})
-Stock.find_or_create_by_stock_id({stock_id: "TATAMOTOR.NS", name: "Tata Motors"})
+Stock.find_or_create_by_stock_id({stock_id: "TVSMOTOR.BO", name: "TVS Motors"})
 Stock.find_or_create_by_stock_id({stock_id: "MNM.BO", name: "Mahindra & Mahindra"})
 Stock.find_or_create_by_stock_id({stock_id: "RELIANCE.NS", name: "Reliance Industries"})
 Stock.find_or_create_by_stock_id({stock_id: "CAIRN.NS", name: "CAIRN"})
@@ -40,5 +40,3 @@ Stock.find_or_create_by_stock_id({stock_id: "RANBAXY.NS", name: "Ranbaxy Pharmac
 Stock.find_or_create_by_stock_id({stock_id: "DRREDDY.NS", name: "Dr. Reddy's'"})
 Stock.find_or_create_by_stock_id({stock_id: "BPCL.NS", name: "BPCL"})
 Stock.find_or_create_by_stock_id({stock_id: "NTPC.NS", name: "NTPC"})
-
-Stock.fetch_all_quotes
