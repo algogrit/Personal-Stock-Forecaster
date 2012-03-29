@@ -8,12 +8,6 @@ PersonalStockForecaster::Application.routes.draw do
     resources :trading_days, only: [:show]
   end
 
-  resources :trading_days, only: [:show] do
-    resources :prediction, only: [:show]
-  end
-
-  resources :prediction, only: [:show]
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
