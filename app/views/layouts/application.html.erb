@@ -10,15 +10,40 @@
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-      <div class="brand top_header">
-        Personal Stock Forecaster
+      <a class="brand" href="/">Personal Stock Forecaster</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li class="active">
+            <a href="/pages/about">About Us</a>
+          </li>
+        </ul>
+        <p class="pull-right">
+          <% if user_signed_in?  %>
+              <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "navbar-text" %>
+          <% else%>
+              <%= link_to 'Sign In', new_user_session_path, class: "navbar-text" %>
+          <% end %>
+        </p>
       </div>
     </div>
   </div>
 </div>
 
 <div class="container">
+  <% unless notice.nil? %>
+      <div id="notice" class="alert alert-info">
+        <%= notice %>
+      </div>
+  <% end %>
+
+  <% unless alert.nil? %>
+      <div id="alert" class="alert alert-error">
+        <%= alert %>
+      </div>
+  <% end %>
+
   <%= yield %>
+
 </div>
 </body>
 </html>

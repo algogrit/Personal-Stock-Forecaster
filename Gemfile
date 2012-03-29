@@ -15,6 +15,8 @@ gem 'yahoofinance-typhoeus'
 
 gem 'whenever', :require => false
 
+gem 'devise'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
