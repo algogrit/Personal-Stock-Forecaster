@@ -1,4 +1,7 @@
 class StocksController < ApplicationController
+
+  before_filter :authenticate_user!
+
   # GET /stocks
   # GET /stocks.json
   def index

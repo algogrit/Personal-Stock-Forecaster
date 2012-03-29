@@ -12,17 +12,18 @@
     <div class="container">
       <a class="brand" href="/">Personal Stock Forecaster</a>
       <div class="nav-collapse">
-        <ul class="nav">
-          <li class="active">
-            <a href="/pages/about">About Us</a>
-          </li>
-        </ul>
-        <p class="pull-right">
-          <% if user_signed_in?  %>
+        <% if user_signed_in?  %>
+            <ul class="nav">
+              <li class="active">
+                <a href="/pages/about_us">About Us</a>
+              </li>
+            </ul>
+            <p class="pull-right">
               <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "navbar-text" %>
-          <% else%>
+        <% else%>
+            <p class="pull-right">
               <%= link_to 'Sign In', new_user_session_path, class: "navbar-text" %>
-          <% end %>
+        <% end %>
         </p>
       </div>
     </div>

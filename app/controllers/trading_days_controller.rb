@@ -1,4 +1,7 @@
 class TradingDaysController < ApplicationController
+
+  before_filter :authenticate_user!
+
   def show
     @trading_day = TradingDay.find(params[:id])
     respond_to do |format|

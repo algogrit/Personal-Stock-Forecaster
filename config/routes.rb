@@ -1,5 +1,17 @@
 PersonalStockForecaster::Application.routes.draw do
 
+  get "pages/index", controller: 'pages', action: 'index'
+
+  get "pages/home", controller: 'pages', action: 'home'
+
+  get "pages/welcome", controller: 'pages', action: 'welcome'
+
+  get "pages/about_us"
+
+  get "pages/contact_us"
+
+  root :to => 'pages#index'
+
   devise_for :users
 
   match '/stocks/update_quotes', controller: 'stocks', action: 'fetch_quotes'
@@ -57,7 +69,6 @@ PersonalStockForecaster::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
 
   # See how all your routes lay out with "rake routes"
 
