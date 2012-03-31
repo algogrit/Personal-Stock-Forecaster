@@ -15,7 +15,7 @@
         <% if user_signed_in?  %>
             <ul class="nav">
               <li class="active">
-                <a href="/pages/about_us">About Us</a>
+                <%=link_to "Stock Index", stocks_path%>
               </li>
             </ul>
             <p class="pull-right">
@@ -45,6 +45,30 @@
 
   <%= yield %>
 
+  <br/><br/>
+  <hr/>
+  <footer>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <div class=brand>
+            <%= image_tag("logo.jpg")%>
+          </div>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li>
+                <%=link_to "About Us", pages_about_us_path%>
+              </li>
+              <li>
+                <%=link_to "Contact Us", pages_contact_us_path%>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 </div>
+
 </body>
 </html>

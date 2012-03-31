@@ -3,11 +3,11 @@ class PagesController < ApplicationController
   def index
     if user_signed_in?
       respond_to do |format|
-        format.html {redirect_to pages_home_url}
+        format.html {render pages_home_path}
       end
     else
       respond_to do |format|
-        format.html {redirect_to pages_welcome_url}
+        format.html {render pages_welcome_path}
       end
     end
   end

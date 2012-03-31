@@ -35,7 +35,7 @@ class Stock < ActiveRecord::Base
   end
 
   def self.parse_csv(file_path, stock)
-    require 'CSV'
+    require 'csv'
     CSV.open(file_path).each_with_index do |row, i|
       next if i==0
       trading_day_attributes = {date_of_trade: row[0].to_date, opening: row[1].to_f, high: row[2].to_f, low: row[3].to_f, closing: row[4].to_f, volume: row[5].to_i}
