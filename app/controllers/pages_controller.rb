@@ -2,6 +2,7 @@ class PagesController < ApplicationController
 
   def index
     if user_signed_in?
+      @user = current_user
       respond_to do |format|
         format.html {render pages_home_path}
       end
