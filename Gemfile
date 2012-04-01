@@ -7,6 +7,8 @@ gem 'rails', '3.2.2'
 
 gem 'mysql2'
 
+gem 'kaminari'
+
 gem 'will_paginate'
 
 gem 'bootstrap-will_paginate'
@@ -16,6 +18,10 @@ gem 'yahoofinance-typhoeus'
 gem 'whenever', :require => false
 
 gem 'devise'
+
+gem 'activeadmin'
+
+gem 'formtastic-bootstrap'
 
 # Gems used only for assets and not required
 # in production environments by default.

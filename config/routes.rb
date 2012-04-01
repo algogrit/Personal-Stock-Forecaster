@@ -1,5 +1,9 @@
 PersonalStockForecaster::Application.routes.draw do
 
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
   get "pages/index", controller: 'pages', action: 'index'
   get "pages/home", controller: 'pages', action: 'home'
   get "pages/welcome", controller: 'pages', action: 'welcome'
