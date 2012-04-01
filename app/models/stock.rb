@@ -4,6 +4,7 @@ class Stock < ActiveRecord::Base
   validates_uniqueness_of :stock_id
 
   has_many :trading_days, :dependent => :destroy
+  has_many :shares, :dependent => :destroy
 
   def self.fetch_all_quotes
     begin
