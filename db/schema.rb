@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120328171026) do
+ActiveRecord::Schema.define(:version => 20120401100944) do
 
   create_table "predictions", :force => true do |t|
     t.float    "value"
@@ -22,6 +22,19 @@ ActiveRecord::Schema.define(:version => 20120328171026) do
   end
 
   add_index "predictions", ["trading_day_id"], :name => "index_predictions_on_trading_day_id"
+
+  create_table "shares", :force => true do |t|
+    t.integer  "stock_id"
+    t.date     "date_of_purchase"
+    t.date     "date_of_sale"
+    t.integer  "volume"
+    t.integer  "user_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "shares", ["stock_id"], :name => "index_shares_on_stock_id"
+  add_index "shares", ["user_id"], :name => "index_shares_on_user_id"
 
   create_table "stocks", :force => true do |t|
     t.string   "stock_id"

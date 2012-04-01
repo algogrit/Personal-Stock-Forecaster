@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  has_many shares, :dependent => :destroy
+  has_many :shares, :dependent => :destroy
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
