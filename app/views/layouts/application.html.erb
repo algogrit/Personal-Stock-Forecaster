@@ -15,6 +15,9 @@
         <% if user_signed_in?  %>
             <ul class="nav">
               <li class="active">
+                <%=link_to "Portfolio", shares_path%>
+              </li>
+              <li class="active">
                 <%=link_to "Stock Index", stocks_path%>
               </li>
             </ul>

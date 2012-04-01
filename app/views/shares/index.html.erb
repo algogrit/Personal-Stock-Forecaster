@@ -1,0 +1,30 @@
+<h1>Portfolio Listing</h1>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Stock ID</th>
+    <th>Purchasing Date</th>
+    <th>Selling Date</th>
+    <th>Volume</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @shares.each do |share| %>
+      <tr>
+        <td><%= link_to share.stock.stock_id, share %></td>
+        <td><%= share.date_of_purchase %></td>
+        <td><%= share.date_of_sale %></td>
+        <td><%= share.volume %></td>
+        <td><%= link_to 'Edit', edit_share_path(share), class: "btn btn-mini btn-warning" %> <%= link_to 'Destroy', share, confirm: 'Are you sure?', method: :delete, class: "btn btn-mini btn-danger" %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<p><%= will_paginate @shares %></p>
+
+<%= link_to 'Add Share', new_share_path, class: "btn btn-primary" %>

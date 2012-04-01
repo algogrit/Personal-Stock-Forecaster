@@ -1,0 +1,9 @@
+<h2><%= @share.stock.stock_id %> - <%= @share.stock.name %></h2>
+
+Date of Purchase : <%= @share.date_of_purchase %><br/>
+Date of Sale : <%= @share.date_of_sale %><br/>
+Volume: <%= @share.volume %>
+
+
+<br/>
+<%= link_to 'Edit', edit_share_path(@stock) %> | <%= link_to 'Back', shares_path %>

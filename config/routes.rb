@@ -1,13 +1,9 @@
 PersonalStockForecaster::Application.routes.draw do
 
   get "pages/index", controller: 'pages', action: 'index'
-
   get "pages/home", controller: 'pages', action: 'home'
-
   get "pages/welcome", controller: 'pages', action: 'welcome'
-
   get "pages/about_us"
-
   get "pages/contact_us"
 
   root :to => 'pages#index'
@@ -19,6 +15,16 @@ PersonalStockForecaster::Application.routes.draw do
   resources :stocks do
     resources :trading_days, only: [:show]
   end
+
+  resources :shares
+
+  #get "shares", controller: 'shares', action: 'index'
+  #post "shares", controller: 'shares', action: 'create'
+  #get "shares/new", controller: 'shares', action: 'new', as: "new_share"
+  #get "shares/:id/edit", controller: 'shares', action: 'edit', as: "edit_share"
+  #get "shares/:id", controller: 'shares', action: 'show', as: "share"
+  #put "shares/:id", controller: 'shares', action: 'update'
+  #delete "shares/:id", controller: 'shares', action: 'destroy'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
