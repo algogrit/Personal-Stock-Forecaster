@@ -20,6 +20,9 @@
               <li class="active">
                 <%=link_to "Stock Index", stocks_path%>
               </li>
+              <li class="active">
+                <%=link_to "Predictions", predictions_path%>
+              </li>
             </ul>
             <p class="pull-right">
               <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "navbar-text" %>

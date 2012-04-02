@@ -1,0 +1,7 @@
+<%= form_tag({ controller: "predictions", action: "show" }) do %>
+    <div class="field">
+      <%= label_tag "Please select a stock: " %>
+      <%= collection_select(:stock, :id, @stocks, :id, :name) %>
+    </div><br/>
+    <%= submit_tag "Get Prediction" %>
+<% end %>

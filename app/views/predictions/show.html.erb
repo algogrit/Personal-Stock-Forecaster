@@ -1,0 +1,8 @@
+<% if !@prediction.nil? %>
+    <h3>Prediction for <%= @stock.name %></h3>
+
+    <%= render @prediction %>
+<% else %>
+    *There are no predictions to display.<br/><br/>
+<% end %>
+<%= link_to 'Back', predictions_path %>

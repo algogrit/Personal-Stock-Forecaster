@@ -20,6 +20,10 @@ PersonalStockForecaster::Application.routes.draw do
 
   resources :shares
 
+  get "predictions", controller: 'predictions', action: 'index'
+
+  match "predictions/show", controller: 'predictions', action: 'show'
+
   #get "shares", controller: 'shares', action: 'index'
   #post "shares", controller: 'shares', action: 'create'
   #get "shares/new", controller: 'shares', action: 'new', as: "new_share"
