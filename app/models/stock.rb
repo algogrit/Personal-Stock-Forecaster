@@ -19,6 +19,22 @@ class Stock < ActiveRecord::Base
     end
   end
 
+  def self.generate_predictions
+    Stock.all.each do |stock|
+      prediction_sum=0
+      stock.trading_days.order("date_of_trade DESC").limit(30).each do |trading_day|
+        prediction_sum += trading_day.closing
+      end
+      prediction_value = prediction_sum / 30
+      stock.last_trading_day.create_prediction({value: prediction_value, for_date: stock.last_trading_day.date_of_trade+1.day})
+    end
+  end
+
+  def last_trading_day
+    trading_days.order("date_of_trade").last
+  end
+
+
   private
   def self.fetch_quotes_for(stock, start_date, end_date)
     stock_symbol = stock.stock_id
@@ -45,10 +61,10 @@ class Stock < ActiveRecord::Base
   end
 
   def self.last_quotes_update(stock)
-    if stock.trading_days.first.nil?
+    if stock.trading_days.empty?
       quotes_update=Date.today-1.year
     else
-      quotes_update=stock.trading_days.find(:first, :order => "created_at DESC").created_at.to_date
+      quotes_update=stock.last_trading_day.date_of_trade+1.day
     end
     quotes_update
   end

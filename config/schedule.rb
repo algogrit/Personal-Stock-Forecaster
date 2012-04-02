@@ -19,8 +19,12 @@
 
 # Learn more: http://github.com/javan/whenever
 
-every 1.day, :at => '4:00 pm' do
+every 1.day, :at => '11:30 am' do
   runner "Stock.fetch_all_quotes"
+end
+
+every 1.day, :at => '12:00 pm' do
+  runner "Stock.generate_predictions"
 end
 
 every :reboot do

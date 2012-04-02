@@ -3,6 +3,10 @@ ActiveAdmin.register Stock do
     link_to 'Update Quotes', fetch_quotes_admin_stocks_path
   end
 
+  action_item :only => :index do
+    link_to 'Generate Predictions', generate_predictions_admin_stocks_path
+  end
+
   collection_action :fetch_quotes do
     respond_to do |format|
       if Stock.fetch_all_quotes
@@ -12,6 +16,14 @@ ActiveAdmin.register Stock do
         format.html { redirect_to admin_stocks_url, alert: 'There has been some problem with fetching quotes, try again later.' }
         format.json { head :no_content }
       end
+    end
+  end
+
+  collection_action :generate_predictions do
+    Stock.generate_predictions
+    respond_to do |format|
+      format.html { redirect_to admin_stocks_url, notice: 'Predictions have been generated for Stocks.' }
+      format.json { head :no_content }
     end
   end
 
