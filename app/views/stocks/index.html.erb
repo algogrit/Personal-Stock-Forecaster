@@ -4,8 +4,7 @@
   <thead>
   <tr>
     <th>Stock ID</th>
-    <th>Name</th>
-    <th>Actions</th>
+    <th>Company</th>
   </tr>
   </thead>
   <tbody>
@@ -13,7 +12,6 @@
       <tr>
         <td><%= link_to stock.stock_id, stock%></td>
         <td><%= stock.name %></td>
-        <td><%= link_to 'Edit', edit_stock_path(stock), class: "btn btn-mini btn-warning" %> <%= link_to 'Destroy', stock, confirm: 'Are you sure?', method: :delete, class: "btn btn-mini btn-danger" %></td>
       </tr>
   <% end %>
   </tbody>
@@ -21,8 +19,5 @@
 
 <br />
 
-<%= link_to 'Update Quotes', stocks_update_quotes_path, class: "btn btn-success" %>
 
 <p><%= will_paginate @stocks %></p>
-
-<%= link_to 'New Stock', new_stock_path, class: "btn btn-primary" %>

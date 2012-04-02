@@ -14,9 +14,7 @@ PersonalStockForecaster::Application.routes.draw do
 
   devise_for :users
 
-  match '/stocks/update_quotes', controller: 'stocks', action: 'fetch_quotes'
-
-  resources :stocks do
+  resources :stocks, only: [:index, :show] do
     resources :trading_days, only: [:show]
   end
 

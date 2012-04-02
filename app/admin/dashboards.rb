@@ -1,11 +1,12 @@
 ActiveAdmin::Dashboards.build do
 
   section "Recent Users" do
-    table_for User.order("created_at desc").limit(5) do
+    table_for User.order("last_sign_in_at desc").limit(5) do
       column :first_name
       column :last_name
       column :email
-      column :created_at
+      column :last_sign_in_at
+      column :sign_in_count
     end
   end
 
