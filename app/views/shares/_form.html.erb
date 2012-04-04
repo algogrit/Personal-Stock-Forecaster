@@ -12,21 +12,21 @@
     <% end %>
 
     <div class="field">
-      <%= f.label "Stock ID" %><br />
+      <%= f.label "Stock ID" %>
       <%= collection_select(:share, :stock_id, @stocks, :id, :name) %>
-    </div>
+    </div><br />
     <div class="field">
-      <%= f.label "Purchasing Date" %><br />
+      <%= f.label "Purchasing Date" %>
       <%= f.date_select :date_of_purchase, {:start_year => Time.now.year, :end_year => Time.now.year-100, :include_blank => true, :order => [:day, :month, :year]} %>
-    </div>
+    </div><br />
     <div class="field">
-      <%= f.label "Selling Date" %><br />
+      <%= f.label "Selling Date" %>
       <%= f.date_select :date_of_sale, {:start_year => Time.now.year, :end_year => Time.now.year-100, :include_blank => true, :order => [:day, :month, :year]} %>
-    </div>
+    </div><br />
     <div class="field">
-      <%= f.label :volume %><br/>
+      <%= f.label :volume %>
       <%= f.text_field :volume %>
-    </div>
+    </div><br/>
     <div class="actions">
       <%= f.submit nil, class: "btn btn-primary"%>
     </div>
