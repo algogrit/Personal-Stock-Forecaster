@@ -28,10 +28,10 @@ ActiveAdmin.register Stock do
   end
 
   index do
-    column :stock_id, as: "Stock ID", :sortable => :name do |stock|
+    column "Stock ID", :stock_id, :sortable => :stock_id do |stock|
       link_to stock.stock_id, admin_stock_path(stock)
     end
-    column :name, as: "Company"
+    column "Company", :name
     column :created_at
     default_actions
   end
@@ -39,8 +39,12 @@ ActiveAdmin.register Stock do
   show title: :name do
     attributes_table do
       row :id
-      row :stock_id
-      row :name
+      row "Stock ID" do
+        stock.stock_id
+      end
+      row "Company" do
+        stock.name
+      end
       row :created_at
       row :updated_at
     end
