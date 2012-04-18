@@ -137,6 +137,7 @@ GEM
     mysql2 (0.3.11)
     nokogiri (1.5.2)
     orm_adapter (0.0.7)
+    pg (0.13.2)
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
@@ -241,6 +242,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   mysql2
+  pg
   rails (= 3.2.2)
   rspec-rails
   ruby-fann
