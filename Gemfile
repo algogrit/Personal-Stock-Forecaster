@@ -21,6 +21,8 @@ gem 'devise'
 
 gem 'activeadmin'
 
+gem 'formtastic', '~> 2.1.1'
+
 gem 'formtastic-bootstrap'
 
 gem 'ruby-fann'

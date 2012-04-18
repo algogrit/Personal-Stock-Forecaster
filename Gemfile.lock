@@ -92,8 +92,8 @@ GEM
       railties (>= 3.0.0)
     fastercsv (1.5.4)
     ffi (1.0.11)
-    formtastic (2.2.0)
-      actionpack (>= 3.0)
+    formtastic (2.1.1)
+      actionpack (~> 3.0)
     formtastic-bootstrap (1.1.1)
       formtastic
       rails (~> 3.1)
@@ -238,6 +238,7 @@ DEPENDENCIES
   database_cleaner
   devise
   factory_girl_rails
+  formtastic (~> 2.1.1)
   formtastic-bootstrap
   jquery-rails
   kaminari
