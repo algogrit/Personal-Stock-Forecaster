@@ -17,3 +17,5 @@
 .idea/
 
 app/assets/csv/
+
+.DS_Store
