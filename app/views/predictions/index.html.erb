@@ -3,5 +3,5 @@
       <%= label_tag "Please select a stock: " %>
       <%= collection_select(:stock, :id, @stocks, :id, :name) %>
     </div><br/>
-    <%= submit_tag "Get Prediction" %>
+    <%= submit_tag "Get Prediction", class: "btn btn-primary" %>
 <% end %>
