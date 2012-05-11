@@ -30,10 +30,33 @@ class Stock < ActiveRecord::Base
     end
   end
 
+  #def self.generate_predictions
+  #    require 'rubygems'
+  #    require 'ruby_fann/neural_network'
+  #    Stock.all.each do |stock|
+  #        prediction_sum=0
+  #        training_input = Array.new
+  #        training_output = Array.new
+  #        trading_days = stock.trading_days.order("date_of_trade DESC").limit(31)
+  #        trading_days.sort_by! {|x| x.date_of_trade}
+  #        trading_days.each_with_index do |trading_day, index|
+  #            training_output.push([trading_day.closing]) unless index == 0
+  #            prediction_sum += trading_day.closing
+  #            training_input.push([trading_day.opening, trading_day.closing, trading_day.high, trading_day.low, trading_day.volume]) unless index == 30
+  #        end
+  #        prediction_value = prediction_sum / 30
+  #        fann = RubyFann::Shortcut.new(:num_inputs=>5, :num_outputs=>1)
+  #        training_data = RubyFann::TrainData.new(:inputs=>training_input, :desired_outputs=>training_output)
+  #        fann.train_on_data(training_data, 5, 1, 0.1)
+  #        last_day = stock.last_trading_day
+  #        output = fann.run([last_day.opening, last_day.closing, last_day.high, last_day.low, last_day.volume])
+  #        stock.last_trading_day.create_prediction({value: (prediction_value + output.first), for_date: stock.last_trading_day.date_of_trade+1.day})
+  #    end
+  #end
+
   def last_trading_day
     trading_days.order("date_of_trade").last
   end
-
 
   private
   def self.fetch_quotes_for(stock, start_date, end_date)
